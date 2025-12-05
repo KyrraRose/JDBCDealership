@@ -3,11 +3,13 @@ package com.pluralsight.model.contract;
 import com.pluralsight.model.Vehicle;
 
 public class SalesContract extends Contract {
+    private int salesId;
     private double salesTax,recordingFee,processingFee;
     private boolean finance;
 
-    public SalesContract(String date, String customerName, String customerEmail, Vehicle vehicleSold, boolean finance) {
+    public SalesContract(int salesId,String date, String customerName, String customerEmail, Vehicle vehicleSold, boolean finance) {
         super(date, customerName, customerEmail, vehicleSold);
+        this.salesId = salesId;
         this.salesTax = this.vehicleSold.getPrice()*.05;
         this.recordingFee = 100;
         if (this.vehicleSold.getPrice()<10000){
@@ -73,4 +75,11 @@ public class SalesContract extends Contract {
         return this.monthlyPayment;
     }
 
+    public int getSalesId() {
+        return salesId;
+    }
+
+    public void setSalesId(int salesId) {
+        this.salesId = salesId;
+    }
 }

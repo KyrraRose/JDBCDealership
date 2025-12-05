@@ -3,10 +3,12 @@ package com.pluralsight.model;
 import java.util.ArrayList;
 
 public class Dealership {
+    private int dealershipId;
     private String name,address,phone;
     private ArrayList<Vehicle> inventory;
 
-    public Dealership(String name, String address, String phone) {
+    public Dealership(int dealershipId,String name, String address, String phone) {
+        this.dealershipId = dealershipId;
         this.name = name;
         this.address = address;
         this.phone = phone;
@@ -98,5 +100,13 @@ public class Dealership {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public int getDealershipId() {
+        return dealershipId;
+    }
+
+    public void setDealershipId(int dealershipId) {
+        this.dealershipId = dealershipId;
     }
 }
