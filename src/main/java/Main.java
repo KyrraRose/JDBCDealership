@@ -7,7 +7,6 @@ public class Main {
 
         DataManager dataManager = new DataManager();
 
-
         Program.run(dataManager);
     }
 }

@@ -18,10 +18,7 @@ public class DataManager {
         this.dataSource = DatabaseConfig.getDataSource();
     }
 
-    /**
-     * Gets the shared connection, creating it if needed
-     * DAOs should NOT close this connection
-     */
+
     public Connection getConnection() throws SQLException {
         if (sharedConnection == null || sharedConnection.isClosed()) {
             sharedConnection = dataSource.getConnection();
@@ -29,10 +26,7 @@ public class DataManager {
         return sharedConnection;
     }
 
-    /**
-     * Closes the shared connection
-     * Should be called when application exits
-     */
+
     public void close() {
         if (sharedConnection != null) {
             try {

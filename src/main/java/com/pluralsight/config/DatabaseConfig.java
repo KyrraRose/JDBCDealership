@@ -4,10 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
- * Database configuration class using connection pooling
- * Loads credentials from application.properties file
- */
+
 public class DatabaseConfig {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/cardealershipdatabase";
@@ -15,10 +12,6 @@ public class DatabaseConfig {
 
     private static BasicDataSource dataSource;
 
-    /**
-     * Gets or creates the DataSource connection pool
-     * Uses lazy initialization pattern
-     */
     public static BasicDataSource getDataSource() {
         if (dataSource == null) {
             dataSource = new BasicDataSource();
@@ -40,9 +33,6 @@ public class DatabaseConfig {
         return dataSource;
     }
 
-    /**
-     * Loads database credentials from properties file
-     */
     private static Properties loadProperties() throws IOException {
         Properties props = new Properties();
         try (FileInputStream fis = new FileInputStream(PROPERTIES_FILE)) {
@@ -51,16 +41,4 @@ public class DatabaseConfig {
         return props;
     }
 
-    /**
-     * Closes the connection pool (call on application shutdown)
-     */
-    public static void closeDataSource() {
-        if (dataSource != null) {
-            try {
-                dataSource.close();
-            } catch (Exception e) {
-                System.err.println("Error closing data source: " + e.getMessage());
-            }
-        }
-    }
 }

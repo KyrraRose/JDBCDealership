@@ -22,10 +22,10 @@ public class UserInterface {
     private final DataManager dm = new DataManager();
     private final VehicleDao vd = new VehicleDao(dm);
     public void display(){
-        while(true){
+        do{
             init();
             mainMenu();
-        }
+        }while(true);
 
     }
     //helper init
@@ -63,6 +63,8 @@ public class UserInterface {
                     break;
                 case 5:
                     //exit
+                    closeScanner();
+                    dm.close();
                     System.exit(0);
                     break;
                 default:
